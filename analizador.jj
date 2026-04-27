@@ -8,7 +8,7 @@ PARSER_BEGIN(analizador)
 
 public class analizador {
   public static void main(String[] args) {
-    System.out.println("           ANALIZADOR LÉXICO               ");
+    System.out.println("ANALIZADOR LÉXICO - Guzman Ochoa 23211980");
     System.out.println("Ingrese código para analizar:");
 
     try {
