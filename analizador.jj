@@ -8,6 +8,9 @@ PARSER_BEGIN(analizador)
 
 public class analizador {
   public static void main(String[] args) {
+    System.out.println("           ANALIZADOR LÉXICO               ");
+    System.out.println("Ingrese código para analizar:");
+
     try {
       analizador lexer = new analizador(System.in);
       Token t;
@@ -16,11 +19,13 @@ public class analizador {
         String nombreToken = analizadorConstants.tokenImage[t.kind];
 
         if (nombreToken.equals("<ERROR_LEXICO>")) {
-            System.err.println("El símbolo no es reconocido: '" + t.image + "'");
+            System.err.println("Símbolo no reconocido: '" + t.image + "'");
         } else {
-            System.out.println("Clasificación del Token y Atributo: " + nombreToken + " : " + t.image);
+            System.out.printf("%-25s | %s%n", nombreToken, t.image);
         }
+        System.out.println("--------------------------------------------");
       }
+      System.out.println("Análisis finalizado.");
     } catch (Exception e) {
       System.err.println("Error: " + e.getMessage());
     }
