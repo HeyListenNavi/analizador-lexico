@@ -33,39 +33,44 @@ SKIP : {
 }
 
 TOKEN : {
-  < LOGICO: "true" | "false" | "null" | "nil" | "undefined" | "NaN" | "None" >
-| < MEMORIA: "static" | "new" | "let" | "const" | "var" | "del" | "delete" | "sizeof" | "union" | "volatile" | "mutable" | "lazy" | "weak" | "unowned" | "unset" | "alloc" | "free" | "malloc" | "calloc" | "realloc" | "pointer" | "reference" >
-| < AMBITO: "public" | "private" | "protected" | "global" | "nonlocal" | "friend" | "fileprivate" | "open" | "pub" | "internal" | "local" | "exported" >
-| < MOLDES: "class" | "interface" | "implements" | "extends" | "abstract" | "struct" | "template" | "typename" | "namespace" | "protocol" | "extension" | "associatedtype" | "enum" | "trait" | "record" | "type" | "typedef" | "sealed" | "override" | "virtual" | "module" >
-| < EVALUA: "try" | "noexcept" | "assert" | "require" | "ensure" | "expect" | "check" | "verify" >
-| < ERROR: "catch" | "except" | "rescue" | "finally" | "retry" | "throw" | "throws" | "raise" | "panic" | "recover" | "ok" | "Err" | "unwrap" | "fail" | "abort" | "error" | "exception" >
-| < METODOS: "def" | "lambda" | "func" | "fn" | "proc" | "undef" | "alias" | "inout" | "__construct" | "__destruct" | "return" | "yield" | "generator" | "macro" | "routine" | "method" | "function" >
-| < MODULO: "import" | "from" | "package" | "include" | "require_once" | "include_once" | "export" | "use" | "crate" | "mod" | "using" | "exports" | "imports" >
-| < ALIAS: "as" >
-| < CONTEXTO: "with" | "context" | "scope" | "bind" | "apply" | "call" | "closure" >
-| < TIPODE_DATO: "int" | "float" | "double" | "string" | "boolean" | "char" | "byte" | "short" | "long" | "typeof" | "uint" | "ulong" | "decimal" | "int8" | "int16" | "int32" | "int64" | "float32" | "float64" | "rune" | "size_t" | "void" | "any" | "object" | "dynamic" >
-| < OPERAL: "is" | "in" | "not" | "and" | "or" | "instanceof" | "LIKE" | "BETWEEN" | "MATCH" | "REGEXP" | "xor" | "nand" | "nor" | "==" | "!=" | "<" | ">" | "<=" | ">=" >
-| < OBJETOS: "self" | "this" | "super" | "explicit" | "attr_accessor" | "attr_reader" | "attr_writer" | "init" | "deinit" | "convenience" | "clone" | "copy" | "prototype" | "construct" | "destroy" >
-| < TIEMPO: "async" | "await" | "synchronized" | "go" | "chan" | "thread" | "runnable" | "mutex" | "lock" | "semaphore" | "sleep" | "delay" | "wait" | "notify" | "timeout" | "defer" | "spawn" >
-| < MODIFICADOR: "readonly" | "final" >
-| < MATH: "strictfp" | "count" | "sum" | "max" | "min" | "iota" | "abs" | "ceil" | "floor" | "round" | "sin" | "cos" | "tan" | "log" | "exp" | "sqrt" | "pow" | "random" | "rand" | "trunc" | "modulo" >
-| < SISTEMA: "native" | "unsafe" | "asm" | "syscall" | "interrupt" | "kernel" | "system" | "os" | "process" | "pid" | "env" >
-| < OPTIMIZAR: "inline" | "constexpr" | "restrict" | "register" | "auto" >
-| < BD_OPERACIONES: "SELECT" | "FROM" | "INSERT" | "UPDATE" | "DELETE" | "TRUNCATE" | "CREATE" | "ALTER" | "DROP" | "JOIN" | "INNER" | "OUTER" | "LEFT" | "RIGHT" | "ON" | "GROUP" | "BY" | "ORDER" | "ASC" | "DESC" | "HAVING" | "DISTINCT" | "LIMIT" | "OFFSET" | "TABLE" | "VIEW" | "INDEX" | "PRIMARY" | "FOREIGN" | "KEY" | "REFERENCES" >
-| < RED: "http" | "https" | "get" | "post" | "put" | "patch" | "head" | "options" | "fetch" | "axios" | "request" | "response" | "url" | "uri" | "socket" | "connect" | "send" | "receive" | "tcp" | "udp" | "ip" | "port" | "host" >
-| < SALIDA: "cout" | "print" | "echo" | "puts" | "printf" | "write" | "log" | "display" | "alert" | "println" | "console" | "warn" | "info" | "trace" | "debug" | "stdout" | "stderr" >
-| < ENTRADA: "cin" | "gets" | "scanf" | "read" | "input" | "prompt" | "getline" | "readline" | "stdin" >
+  < LOGICO: "true" | "false" | "null" | "nil" | "undefined" | "NaN" | "None" | "Infinity" | "True" | "False" | "Null" | "NIL" >
+| < MEMORIA: "static" | "new" | "let" | "const" | "var" | "del" | "delete" | "sizeof" | "union" | "volatile" | "mutable" | "lazy" | "weak" | "unowned" | "unset" | "alloc" | "free" | "malloc" | "calloc" | "realloc" | "pointer" | "reference" | "stackalloc" | "heap" | "pool" | "buffer" | "cache" | "gc" | "finalize" | "dispose" | "using" >
+| < AMBITO: "public" | "private" | "protected" | "global" | "nonlocal" | "friend" | "fileprivate" | "open" | "pub" | "internal" | "local" | "exported" | "package" | "extern" | "native" | "restrict" >
+| < MOLDES: "class" | "interface" | "implements" | "extends" | "abstract" | "struct" | "template" | "typename" | "namespace" | "protocol" | "extension" | "associatedtype" | "enum" | "trait" | "record" | "type" | "typedef" | "sealed" | "override" | "virtual" | "module" | "package" | "actor" | "component" | "factory" | "singleton" | "observer" >
+| < EVALUA: "try" | "noexcept" | "assert" | "require" | "ensure" | "expect" | "check" | "verify" | "validate" | "test" | "mock" | "stub" | "precondition" | "postcondition" >
+| < ERROR: "catch" | "except" | "rescue" | "finally" | "retry" | "throw" | "throws" | "raise" | "panic" | "recover" | "ok" | "Err" | "unwrap" | "fail" | "abort" | "error" | "exception" | "fault" | "warn" | "critical" | "fatal" | "bug" | "issue" | "stacktrace" | "crash" >
+| < METODOS: "def" | "lambda" | "func" | "fn" | "proc" | "undef" | "alias" | "inout" | "__construct" | "__destruct" | "return" | "yield" | "generator" | "macro" | "routine" | "method" | "function" | "initializer" | "finalizer" | "getter" | "setter" | "property" | "signal" | "slot" | "emit" | "call" >
+| < MODULO: "import" | "from" | "package" | "include" | "require_once" | "include_once" | "export" | "use" | "crate" | "mod" | "using" | "exports" | "imports" | "require" | "load" | "fetch" | "bundle" | "library" | "framework" | "dependency" >
+| < ALIAS: "as" | "with" | "for" | "in" | "into" | "onto" >
+| < CONTEXTO: "with" | "context" | "scope" | "bind" | "apply" | "closure" | "block" | "pipe" | "stream" | "flow" >
+| < TIPODE_DATO: "int" | "float" | "double" | "string" | "boolean" | "char" | "byte" | "short" | "long" | "typeof" | "uint" | "ulong" | "decimal" | "int8" | "int16" | "int32" | "int64" | "float32" | "float64" | "rune" | "size_t" | "void" | "any" | "object" | "dynamic" | "array" | "list" | "map" | "set" | "tuple" | "dictionary" | "vector" | "matrix" | "tensor" | "variant" | "complex" | "imaginary" | "fixed" | "bfloat16" >
+| < OPERAL: "is" | "in" | "not" | "and" | "or" | "instanceof" | "LIKE" | "BETWEEN" | "MATCH" | "REGEXP" | "xor" | "nand" | "nor" | "==" | "!=" | "<" | ">" | "<=" | ">=" | "===" | "!==" | "<>" | "<=>" | "&&" | "||" >
+| < OBJETOS: "self" | "this" | "super" | "explicit" | "attr_accessor" | "attr_reader" | "attr_writer" | "init" | "deinit" | "convenience" | "clone" | "copy" | "prototype" | "construct" | "destroy" | "instantiate" | "reflect" | "introspect" | "delegate" | "proxy" >
+| < TIEMPO: "async" | "await" | "synchronized" | "go" | "chan" | "thread" | "runnable" | "mutex" | "lock" | "semaphore" | "sleep" | "delay" | "wait" | "notify" | "timeout" | "defer" | "spawn" | "fork" | "join" | "parallel" | "atomic" | "volatile" | "transient" | "persistent" | "future" | "promise" | "task" >
+| < MODIFICADOR: "readonly" | "final" | "immutable" | "sealed" | "abstract" | "virtual" | "override" | "internal" | "extern" | "native" >
+| < MATH: "strictfp" | "count" | "sum" | "max" | "min" | "iota" | "abs" | "ceil" | "floor" | "round" | "sin" | "cos" | "tan" | "log" | "exp" | "sqrt" | "pow" | "random" | "rand" | "trunc" | "modulo" | "atan" | "acos" | "asin" | "sinh" | "cosh" | "tanh" | "PI" | "E" | "LN10" | "SQRT2" >
+| < SISTEMA: "native" | "unsafe" | "asm" | "syscall" | "interrupt" | "kernel" | "system" | "os" | "process" | "pid" | "env" | "user" | "group" | "chmod" | "chown" | "exec" | "kill" | "pipe" | "socket" | "stdin" | "stdout" | "stderr" >
+| < OPTIMIZAR: "inline" | "constexpr" | "restrict" | "register" | "auto" | "fastcall" | "stdcall" | "cdecl" | "pascal" | "noinline" >
+| < BD_OPERACIONES: "SELECT" | "FROM" | "INSERT" | "UPDATE" | "DELETE" | "TRUNCATE" | "CREATE" | "ALTER" | "DROP" | "JOIN" | "INNER" | "OUTER" | "LEFT" | "RIGHT" | "ON" | "GROUP" | "BY" | "ORDER" | "ASC" | "DESC" | "HAVING" | "DISTINCT" | "LIMIT" | "OFFSET" | "TABLE" | "VIEW" | "INDEX" | "PRIMARY" | "FOREIGN" | "KEY" | "REFERENCES" | "WHERE" | "AND" | "OR" | "NOT" | "UNION" | "EXCEPT" | "INTERSECT" | "VALUES" | "SET" | "COMMIT" | "ROLLBACK" | "SAVEPOINT" | "GRANT" | "REVOKE" | "SCHEMA" | "DATABASE" | "PROCEDURE" | "TRIGGER" | "SEQUENCE" | "EXPLAIN" | "ANALYZE" >
+| < RED: "http" | "https" | "get" | "post" | "put" | "patch" | "head" | "options" | "fetch" | "axios" | "request" | "response" | "url" | "uri" | "socket" | "connect" | "send" | "receive" | "tcp" | "udp" | "ip" | "port" | "host" | "dns" | "ftp" | "ssh" | "ssl" | "tls" | "certificate" | "proxy" | "gateway" | "route" >
+| < SALIDA: "cout" | "print" | "echo" | "puts" | "printf" | "write" | "log" | "display" | "alert" | "println" | "console" | "warn" | "info" | "trace" | "debug" | "stdout" | "stderr" | "syslog" | "stream" | "buffer" | "write_line" >
+| < ENTRADA: "cin" | "gets" | "scanf" | "read" | "input" | "prompt" | "getline" | "readline" | "stdin" | "keyboard" | "mouse" | "event" | "click" | "press" | "drag" | "scroll" | "touch" >
+| < CONTROL: "if" | "else" | "elseif" | "switch" | "case" | "default" | "for" | "while" | "do" | "foreach" | "break" | "continue" | "goto" | "exit" | "die" | "halt" | "step" | "next" | "repeat" | "until" | "match" | "when" | "then" | "otherwise" >
+| < WEB: "html" | "css" | "js" | "json" | "xml" | "yaml" | "toml" | "markdown" | "svg" | "canvas" | "dom" | "window" | "document" | "body" | "head" | "script" | "style" | "div" | "span" | "img" | "link" | "meta" | "header" | "footer" | "section" | "article" | "aside" | "nav" | "button" | "input" | "form" | "label" >
 
-| < ASIGNA: "=" >
+| < ASIGNA: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "&=" | "|=" | "^=" | "<<=" | ">>=" | "??=" | "||=" | "&&=" >
 | < PAR_IZQ: "(" >
 | < PAR_DER: ")" >
 | < LLAVE_IZQ: "{" >
 | < LLAVE_DER: "}" >
+| < CORCHETE_IZQ: "[" >
+| < CORCHETE_DER: "]" >
 | < PUNTO_COMA: ";" >
 | < DOS_PUNTOS: ":" >
 | < COMA: "," >
 | < PUNTO: "." >
-| < OP_ARITMETICO: "+" | "-" | "*" | "/" >
+| < FLECHA: "->" | "=>" >
+| < OP_ARITMETICO: "+" | "-" | "*" | "/" | "%" | "++" | "--" | "**" >
 | < CADENA: "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
 
 | < NUMERO: (["0"-"9"])+ ("." (["0"-"9"])+)? >
