@@ -1,0 +1,75 @@
+
+options {
+  STATIC = false;
+  IGNORE_CASE = false;
+}
+
+PARSER_BEGIN(analizador)
+
+public class analizador {
+  public static void main(String[] args) {
+    try {
+      analizador lexer = new analizador(System.in);
+      Token t;
+
+      while ((t = lexer.getNextToken()).kind != analizadorConstants.EOF) {
+        String nombreToken = analizadorConstants.tokenImage[t.kind];
+
+        if (nombreToken.equals("<ERROR_LEXICO>")) {
+            System.err.println("El símbolo no es reconocido: '" + t.image + "'");
+        } else {
+            System.out.println("Clasificación del Token y Atributo: " + nombreToken + " : " + t.image);
+        }
+      }
+    } catch (Exception e) {
+      System.err.println("Error: " + e.getMessage());
+    }
+  }
+}
+PARSER_END(analizador)
+
+SKIP : {
+  " " | "\t" | "\n" | "\r"
+}
+
+TOKEN : {
+  < LOGICO: "true" | "false" | "null" | "nil" | "undefined" | "NaN" | "None" >
+| < MEMORIA: "static" | "new" | "let" | "const" | "var" | "del" | "delete" | "sizeof" | "union" | "volatile" | "mutable" | "lazy" | "weak" | "unowned" | "unset" | "alloc" | "free" | "malloc" | "calloc" | "realloc" | "pointer" | "reference" >
+| < AMBITO: "public" | "private" | "protected" | "global" | "nonlocal" | "friend" | "fileprivate" | "open" | "pub" | "internal" | "local" | "exported" >
+| < MOLDES: "class" | "interface" | "implements" | "extends" | "abstract" | "struct" | "template" | "typename" | "namespace" | "protocol" | "extension" | "associatedtype" | "enum" | "trait" | "record" | "type" | "typedef" | "sealed" | "override" | "virtual" | "module" >
+| < EVALUA: "try" | "noexcept" | "assert" | "require" | "ensure" | "expect" | "check" | "verify" >
+| < ERROR: "catch" | "except" | "rescue" | "finally" | "retry" | "throw" | "throws" | "raise" | "panic" | "recover" | "ok" | "Err" | "unwrap" | "fail" | "abort" | "error" | "exception" >
+| < METODOS: "def" | "lambda" | "func" | "fn" | "proc" | "undef" | "alias" | "inout" | "__construct" | "__destruct" | "return" | "yield" | "generator" | "macro" | "routine" | "method" | "function" >
+| < MODULO: "import" | "from" | "package" | "include" | "require_once" | "include_once" | "export" | "use" | "crate" | "mod" | "using" | "exports" | "imports" >
+| < ALIAS: "as" >
+| < CONTEXTO: "with" | "context" | "scope" | "bind" | "apply" | "call" | "closure" >
+| < TIPODE_DATO: "int" | "float" | "double" | "string" | "boolean" | "char" | "byte" | "short" | "long" | "typeof" | "uint" | "ulong" | "decimal" | "int8" | "int16" | "int32" | "int64" | "float32" | "float64" | "rune" | "size_t" | "void" | "any" | "object" | "dynamic" >
+| < OPERAL: "is" | "in" | "not" | "and" | "or" | "instanceof" | "LIKE" | "BETWEEN" | "MATCH" | "REGEXP" | "xor" | "nand" | "nor" | "==" | "!=" | "<" | ">" | "<=" | ">=" >
+| < OBJETOS: "self" | "this" | "super" | "explicit" | "attr_accessor" | "attr_reader" | "attr_writer" | "init" | "deinit" | "convenience" | "clone" | "copy" | "prototype" | "construct" | "destroy" >
+| < TIEMPO: "async" | "await" | "synchronized" | "go" | "chan" | "thread" | "runnable" | "mutex" | "lock" | "semaphore" | "sleep" | "delay" | "wait" | "notify" | "timeout" | "defer" | "spawn" >
+| < MODIFICADOR: "readonly" | "final" >
+| < MATH: "strictfp" | "count" | "sum" | "max" | "min" | "iota" | "abs" | "ceil" | "floor" | "round" | "sin" | "cos" | "tan" | "log" | "exp" | "sqrt" | "pow" | "random" | "rand" | "trunc" | "modulo" >
+| < SISTEMA: "native" | "unsafe" | "asm" | "syscall" | "interrupt" | "kernel" | "system" | "os" | "process" | "pid" | "env" >
+| < OPTIMIZAR: "inline" | "constexpr" | "restrict" | "register" | "auto" >
+| < BD_OPERACIONES: "SELECT" | "FROM" | "INSERT" | "UPDATE" | "DELETE" | "TRUNCATE" | "CREATE" | "ALTER" | "DROP" | "JOIN" | "INNER" | "OUTER" | "LEFT" | "RIGHT" | "ON" | "GROUP" | "BY" | "ORDER" | "ASC" | "DESC" | "HAVING" | "DISTINCT" | "LIMIT" | "OFFSET" | "TABLE" | "VIEW" | "INDEX" | "PRIMARY" | "FOREIGN" | "KEY" | "REFERENCES" >
+| < RED: "http" | "https" | "get" | "post" | "put" | "patch" | "head" | "options" | "fetch" | "axios" | "request" | "response" | "url" | "uri" | "socket" | "connect" | "send" | "receive" | "tcp" | "udp" | "ip" | "port" | "host" >
+| < SALIDA: "cout" | "print" | "echo" | "puts" | "printf" | "write" | "log" | "display" | "alert" | "println" | "console" | "warn" | "info" | "trace" | "debug" | "stdout" | "stderr" >
+| < ENTRADA: "cin" | "gets" | "scanf" | "read" | "input" | "prompt" | "getline" | "readline" | "stdin" >
+
+| < ASIGNA: "=" >
+| < PAR_IZQ: "(" >
+| < PAR_DER: ")" >
+| < LLAVE_IZQ: "{" >
+| < LLAVE_DER: "}" >
+| < PUNTO_COMA: ";" >
+| < DOS_PUNTOS: ":" >
+| < COMA: "," >
+| < PUNTO: "." >
+| < OP_ARITMETICO: "+" | "-" | "*" | "/" >
+| < CADENA: "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
+
+| < NUMERO: (["0"-"9"])+ ("." (["0"-"9"])+)? >
+| < IDENTIFICADOR: ["a"-"z","A"-"Z","_"] (["a"-"z","A"-"Z","0"-"9","_"])* >
+
+| < ERROR_LEXICO: ~[] >
+}
