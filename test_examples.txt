@@ -1,0 +1,20 @@
+public static void main() { int x = 10; float y = 20.5; }
+if (x > 0 && true) { print("Hello World"); } else { log('Error'); }
+class MyClass extends Base implements Interface { private string name; }
+try { throw new Exception("fail"); } catch (e) { println(e.message); }
+import { component } from "library"; export const value = 42;
+let result = (5 + 3) * 10 / 2 % 3; x++; y--; z**2;
+self.this -> super.init(); delegate.proxy();
+is in not and or == != < > <= >= === !== <> <=> && ||
+= += -= *= /= %= &= |= ^= <<= >>= ??= ||= &&=
+( ) { } [ ] ; : , . -> =>
+int float double string boolean char byte short long typeof
+while (i < 10) { i += 1; if (i == 5) break; continue; }
+cout << "Output"; cin >> input; scanf("%d", &v);
+strictfp sum(1, 2, 3); max(a, b); sin(PI); sqrt(16);
+static volatile mutable lazy weak alloc free malloc
+abstract virtual override internal extern native readonly final
+with (context) { bind(apply); } flow.pipe();
+true false null nil undefined NaN Infinity
+"This is a double quote string" 'This is a single quote string'
+123 456.78 0.99 _myVariable var123 camelCase
