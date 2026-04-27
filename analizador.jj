@@ -52,16 +52,16 @@ TOKEN : {
 | < CONTROL: "if" | "else" | "elseif" | "switch" | "case" | "default" | "for" | "while" | "do" | "foreach" | "break" | "continue" | "goto" | "exit" | "die" | "halt" | "step" | "next" | "repeat" | "until" | "match" | "when" | "then" | "otherwise" >
 
 | < ASIGNA: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "&=" | "|=" | "^=" | "<<=" | ">>=" | "??=" | "||=" | "&&=" >
-| < PAR_IZQ: "(" >
-| < PAR_DER: ")" >
-| < LLAVE_IZQ: "{" >
-| < LLAVE_DER: "}" >
-| < CORCHETE_IZQ: "[" >
-| < CORCHETE_DER: "]" >
-| < PUNTO_COMA: ";" >
-| < DOS_PUNTOS: ":" >
-| < COMA: "," >
-| < PUNTO: "." >
+| < PAR_IZQ: ["("] >
+| < PAR_DER: [")"] >
+| < LLAVE_IZQ: ["{"] >
+| < LLAVE_DER: ["}"] >
+| < CORCHETE_IZQ: ["["] >
+| < CORCHETE_DER: ["]"] >
+| < PUNTO_COMA: [";"] >
+| < DOS_PUNTOS: [":"] >
+| < COMA: [","] >
+| < PUNTO: ["."] >
 | < FLECHA: "->" | "=>" >
 | < OP_ARITMETICO: "+" | "-" | "*" | "/" | "%" | "++" | "--" | "**" >
 | < CADENA: "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
