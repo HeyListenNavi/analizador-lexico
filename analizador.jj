@@ -38,23 +38,111 @@ SKIP : {
 }
 
 TOKEN : {
-  < LOGICO: "true" | "false" | "null" | "nil" | "undefined" | "NaN" | "Infinity" >
-| < MEMORIA: "static" | "new" | "let" | "const" | "var" | "del" | "delete" | "sizeof" | "union" | "volatile" | "mutable" | "lazy" | "weak" | "alloc" | "free" | "malloc" | "calloc" | "realloc" | "pointer" | "reference" | "stackalloc" | "heap" | "pool" | "buffer" | "cache" | "gc" | "finalize" | "dispose" | "using" >
-| < AMBITO: "public" | "private" | "protected" | "global" | "nonlocal" | "friend" | "fileprivate" | "open" | "pub" | "internal" | "local" | "exported" | "package" | "extern" | "native" | "restrict" >
-| < MOLDES: "class" | "interface" | "implements" | "extends" | "abstract" | "struct" | "template" | "typename" | "namespace" | "protocol" | "extension" | "associatedtype" | "enum" | "trait" | "record" | "type" | "typedef" | "sealed" | "override" | "virtual" | "module" | "package" | "actor" | "component" | "factory" | "singleton" | "observer" >
-| < EVALUA: "try" | "noexcept" | "assert" | "require" | "ensure" | "expect" | "check" | "verify" | "validate" | "test" | "mock" | "stub" | "precondition" | "postcondition" >
-| < ERROR: "catch" | "except" | "rescue" | "finally" | "retry" | "throw" | "throws" | "raise" | "panic" | "recover" | "ok" | "Err" | "unwrap" | "fail" | "abort" | "error" | "exception" | "fault" | "warn" | "critical" | "fatal" | "bug" | "issue" | "stacktrace" | "crash" >
-| < METODOS: "def" | "lambda" | "func" | "fn" | "proc" | "undef" | "alias" | "inout" | "__construct" | "__destruct" | "return" | "yield" | "generator" | "macro" | "routine" | "method" | "function" | "initializer" | "finalizer" | "getter" | "setter" | "property" | "signal" | "slot" | "emit" | "call" >
-| < MODULO: "import" | "from" | "package" | "include" | "require_once" | "include_once" | "export" | "use" | "crate" | "mod" | "using" | "exports" | "imports" | "require" | "load" | "fetch" | "bundle" | "library" | "framework" | "dependency" >
-| < CONTEXTO: "with" | "context" | "scope" | "bind" | "apply" | "closure" | "block" | "pipe" | "stream" | "flow" >
-| < TIPODE_DATO: "int" | "float" | "double" | "string" | "boolean" | "char" | "byte" | "short" | "long" | "typeof" | "uint" | "ulong" | "decimal" | "int8" | "int16" | "int32" | "int64" | "float32" | "float64" | "rune" | "size_t" | "void" | "any" | "object" | "dynamic" | "array" | "list" | "map" | "set" | "tuple" | "dictionary" | "vector" | "matrix" | "tensor" | "variant" | "complex" | "imaginary" | "fixed" | "bfloat16" >
-| < OPERAL: "is" | "in" | "not" | "and" | "or" | "instanceof" | "LIKE" | "BETWEEN" | "MATCH" | "REGEXP" | "xor" | "nand" | "nor" | "==" | "!=" | "<" | ">" | "<=" | ">=" | "===" | "!==" | "<>" | "<=>" | "&&" | "||" >
-| < OBJETOS: "self" | "this" | "super" | "explicit" | "attr_accessor" | "attr_reader" | "attr_writer" | "init" | "deinit" | "convenience" | "clone" | "copy" | "prototype" | "construct" | "destroy" | "instantiate" | "reflect" | "introspect" | "delegate" | "proxy" >
-| < MODIFICADOR: "readonly" | "final" | "immutable" | "sealed" | "abstract" | "virtual" | "override" | "internal" | "extern" | "native" >
-| < MATH: "strictfp" | "count" | "sum" | "max" | "min" | "iota" | "abs" | "ceil" | "floor" | "round" | "sin" | "cos" | "tan" | "log" | "exp" | "sqrt" | "pow" | "random" | "rand" | "trunc" | "modulo" | "atan" | "acos" | "asin" | "sinh" | "cosh" | "tanh" | "PI" | "E" | "LN10" | "SQRT2" >
-| < SALIDA: "cout" | "print" | "echo" | "puts" | "printf" | "write" | "log" | "display" | "alert" | "println" | "console" | "warn" | "info" | "trace" | "debug" | "stdout" | "stderr" | "syslog" | "stream" | "buffer" | "write_line" >
-| < ENTRADA: "cin" | "gets" | "scanf" | "read" | "input" | "prompt" | "getline" | "readline" | "stdin" | "keyboard" | "mouse" | "event" | "click" | "press" | "drag" | "scroll" | "touch" >
-| < CONTROL: "if" | "else" | "elseif" | "switch" | "case" | "default" | "for" | "while" | "do" | "foreach" | "break" | "continue" | "goto" | "exit" | "die" | "halt" | "step" | "next" | "repeat" | "until" | "match" | "when" | "then" | "otherwise" >
+  < LITERAL_VERDADERO: "true" >
+| < LITERAL_FALSO: "false" >
+| < LITERAL_NULO: "null" | "undefined" >
+| < NUMERO_ESPECIAL: "NaN" | "Infinity" >
+
+| < CONDICION_SI: "if" | "when" >
+| < CONDICION_SINO: "else" | "otherwise" >
+| < SELECCION_MULTIPLE: "switch" | "match" >
+| < CASO_SELECCION: "case" >
+| < CASO_DEFECTO: "default" >
+| < BUCLE_PARA: "for" | "foreach" >
+| < BUCLE_MIENTRAS: "while" | "until" >
+| < BUCLE_HACER: "do" | "repeat" >
+| < CONTINUAR_BUCLE: "continue" | "next" | "step" >
+| < ROMPER_FLUJO: "break" >
+| < SALTO_INCONDICIONAL: "goto" >
+| < FIN_PROGRAMA: "exit" | "die" | "halt" >
+
+| < DECLARA_VARIABLE: "let" | "var" >
+| < DECLARA_CONSTANTE: "const" >
+| < RESERVA_MEMORIA: "new" | "alloc" | "malloc" | "calloc" | "realloc" | "stackalloc" >
+| < LIBERA_MEMORIA: "del" | "delete" | "free" | "dispose" >
+| < RECOLECTOR_BASURA: "gc" | "finalize" >
+| < TIPO_PUNTERO: "pointer" | "reference" >
+| < OBTENER_TAMANO: "sizeof" >
+| < ESPACIO_MEMORIA: "heap" | "pool" | "buffer" | "cache" >
+
+| < VISIBILIDAD_PUBLICA: "public" | "pub" | "exported" | "open" >
+| < VISIBILIDAD_PRIVADA: "private" | "fileprivate" >
+| < VISIBILIDAD_PROTEGIDA: "protected" >
+| < VISIBILIDAD_INTERNA: "internal" | "package" | "friend" >
+| < ALCANCE_GLOBAL: "global" | "extern" >
+| < ALCANCE_LOCAL: "local" | "nonlocal" >
+
+| < MODIFICADOR_ESTATICO: "static" >
+| < MODIFICADOR_MUTABILIDAD: "volatile" | "mutable" | "readonly" | "immutable" | "restrict" >
+| < MODIFICADOR_CARGA: "lazy" >
+| < MODIFICADOR_REFERENCIA: "weak" >
+
+| < DEF_CLASE: "class" >
+| < DEF_INTERFAZ: "interface" | "protocol" >
+| < DEF_ESTRUCTURA: "struct" | "record" | "union" >
+| < DEF_ENUMERACION: "enum" >
+| < HERENCIA: "extends" >
+| < IMPLEMENTACION: "implements" >
+| < MODIFICADOR_CLASE: "abstract" | "sealed" | "final" | "virtual" | "override" >
+| < ALIAS_TIPO: "type" | "typedef" | "typename" | "associatedtype" >
+| < ESPACIO_NOMBRES: "namespace" >
+| < EXTENSION: "extension" >
+| < DEF_RASGO: "trait" >
+| < PLANTILLA: "template" >
+| < PATRON_DISENO: "actor" | "component" | "factory" | "singleton" | "observer" >
+
+| < INICIO_INTENTO: "try" >
+| < CAPTURA_ERROR: "catch" | "except" | "rescue" >
+| < FIN_INTENTO: "finally" >
+| < LANZA_ERROR: "throw" | "throws" | "raise" | "panic" >
+| < RECUPERACION_ERROR: "recover" | "retry" >
+| < ASEGURAR_CONDICION: "assert" | "require" | "ensure" | "expect" | "check" | "verify" | "validate" | "precondition" | "postcondition" | "noexcept" >
+| < ESTADO_PROGRAMA: "ok" | "Err" | "unwrap" | "fail" | "abort" | "crash" | "error" | "exception" | "fault" | "bug" | "issue" | "stacktrace" | "warn" | "critical" | "fatal" >
+
+| < DEF_FUNCION: "def" | "lambda" | "func" | "fn" | "proc" | "routine" | "method" | "function" | "undef" | "alias" | "macro" >
+| < RETORNA_VALOR: "return" >
+| < GENERA_VALOR: "yield" | "generator" >
+| < CONSTRUCTOR: "__construct" | "initializer" | "init" | "convenience" >
+| < DESTRUCTOR: "__destruct" | "finalizer" | "deinit" >
+| < ACCESOR: "getter" | "setter" | "property" >
+| < COMUNICACION_EVENTOS: "signal" | "slot" | "emit" | "call" >
+| < REF_ESTA_INSTANCIA: "self" | "this" >
+| < REF_CLASE_PADRE: "super" >
+| < MANIPULACION_OBJETO: "clone" | "copy" | "prototype" | "construct" | "destroy" | "instantiate" | "reflect" | "introspect" | "delegate" | "proxy" | "explicit" | "attr_accessor" | "attr_reader" | "attr_writer" >
+
+| < IMPORTAR_MODULO: "import" | "include" | "use" | "require" | "require_once" | "include_once" | "load" | "fetch" | "using" >
+| < EXPORTAR_MODULO: "export" | "exports" >
+| < ORIGEN_MODULO: "from" >
+| < DEF_MODULO: "module" | "crate" | "mod" | "package" | "bundle" | "library" | "framework" | "dependency" >
+
+| < TIPO_ENTERO: "int" | "uint" | "short" | "long" | "byte" | "int8" | "int16" | "int32" | "int64" | "ulong" | "size_t" >
+| < TIPO_FLOTANTE: "float" | "double" | "decimal" | "float32" | "float64" | "bfloat16" >
+| < TIPO_TEXTO: "string" | "char" | "rune" >
+| < TIPO_BOOLEANO: "boolean" >
+| < TIPO_VACIO: "void" >
+| < TIPO_DINAMICO: "any" | "object" | "dynamic" | "variant" >
+| < TIPO_COLECCION: "array" | "list" | "map" | "set" | "tuple" | "dictionary" | "vector" | "matrix" | "tensor" >
+| < TIPO_ESPECIAL: "complex" | "imaginary" | "fixed" >
+
+| < COMPROBAR_TIPO: "is" | "instanceof" | "typeof" >
+| < OP_LOGICO_Y: "and" | "&&" >
+| < OP_LOGICO_O: "or" | "||" >
+| < OP_LOGICO_NO: "not" | "xor" | "nand" | "nor" >
+| < OP_IGUALDAD: "==" | "===" >
+| < OP_DESIGUALDAD: "!=" | "!==" | "<>" | "<=>" >
+| < OP_MAYOR_MENOR: "<" | ">" | "<=" | ">=" >
+| < OP_INCLUSION: "in" >
+| < OP_RELACIONAL_TEXTO: "LIKE" | "BETWEEN" | "MATCH" | "REGEXP" >
+
+| < FUNC_MATEMATICA: "abs" | "ceil" | "floor" | "round" | "sin" | "cos" | "tan" | "log" | "exp" | "sqrt" | "pow" | "random" | "rand" | "trunc" | "modulo" | "atan" | "acos" | "asin" | "sinh" | "cosh" | "tanh" | "count" | "sum" | "max" | "min" | "iota" >
+| < CONST_MATEMATICA: "PI" | "E" | "LN10" | "SQRT2" >
+| < PRECISION_MATEMATICA: "strictfp" >
+
+| < IMPRIMIR_SALIDA: "print" | "echo" | "puts" | "printf" | "cout" | "println" | "write" | "display" | "alert" | "console" | "stdout" | "stderr" | "syslog" | "write_line" >
+| < REGISTRO_LOG: "log" | "warn" | "info" | "trace" | "debug" >
+| < LEER_ENTRADA: "cin" | "gets" | "scanf" | "read" | "input" | "prompt" | "getline" | "readline" | "stdin" >
+| < FLUJO_DATOS: "stream" | "buffer" >
+| < INTERACCION_USUARIO: "keyboard" | "mouse" | "event" | "click" | "press" | "drag" | "scroll" | "touch" >
 
 | < ASIGNA: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "&=" | "|=" | "^=" | "<<=" | ">>=" | "??=" | "||=" | "&&=" >
 | < PAR_IZQ: ["("] >
